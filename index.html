@@ -1,0 +1,554 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>ICT Tutorial — Files & Folders Management (AVEE M/A JHS)</title>
+
+<!-- Google font -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<!-- Font Awesome for icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+  :root{
+    --accent-1:#0288d1; /* primary blue */
+    --accent-2:#01579b; /* deep blue */
+    --muted:#546e7a;
+    --card:#ffffff;
+    --soft:#f1f8ff;
+    --success:#4caf50;
+    --danger:#ef5350;
+  }
+
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    font-family:'Poppins',system-ui,Arial,sans-serif;
+    background:linear-gradient(180deg,#eaf6ff 0%, #ffffff 100%);
+    color:#0e2b3a;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    line-height:1.5;
+  }
+
+  header{
+    background:linear-gradient(90deg,var(--accent-1),var(--accent-2));
+    color:#fff;
+    padding:36px 18px;
+    text-align:center;
+    box-shadow:0 6px 18px rgba(2,24,48,0.12);
+  }
+  header h1{margin:0;font-weight:600;font-size:clamp(20px,2.4vw,30px)}
+  header p{margin:8px 0 0;color:rgba(255,255,255,0.9)}
+
+  .container{
+    max-width:1100px;
+    margin:28px auto;
+    padding:24px;
+  }
+
+  .card{
+    background:var(--card);
+    border-radius:12px;
+    box-shadow:0 8px 26px rgba(13,43,58,0.06);
+    padding:22px;
+    margin-bottom:22px;
+  }
+
+  .row{display:flex;gap:18px;align-items:flex-start}
+  .col{flex:1}
+  .aside{width:320px}
+
+  h2{color:var(--accent-2);margin-top:0}
+  h3{color:var(--accent-1);margin-bottom:6px}
+  p{margin:0 0 12px 0;color:var(--muted)}
+
+  .small-ico{width:44px;height:44px;border-radius:8px;background:#eef8ff;display:inline-grid;place-items:center;color:var(--accent-1);margin-right:10px}
+  .diagram{width:120px;max-width:100%;display:block;margin:12px 0;border-radius:8px;box-shadow:0 4px 10px rgba(2,24,48,0.06)}
+
+  .highlight{background:linear-gradient(180deg,#f0fbff, #ffffff);padding:14px;border-radius:10px;border-left:4px solid var(--accent-1);margin:12px 0}
+  .example{background:#fff8e1;padding:12px;border-radius:8px;border-left:4px solid #ffb300;margin:12px 0;color:#4b3b00}
+
+  table{width:100%;border-collapse:collapse;margin-top:10px}
+  th,td{padding:10px;border:1px solid #e6eef6;text-align:left}
+  th{background:var(--accent-1);color:#fff}
+
+  /* videos */
+  .video-wrap{display:flex;flex-direction:column;gap:10px;align-items:center;margin:12px 0}
+  .video{
+    width:100%;
+    max-width:560px;
+    border-radius:10px;
+    overflow:hidden;
+    border:1px solid #e9f4ff;
+    box-shadow:0 8px 24px rgba(2,24,48,0.06);
+  }
+
+  /* quiz */
+  .quiz{background:#f8fbff;padding:18px;border-radius:10px;border-left:4px solid var(--accent-1);margin-top:20px}
+  .q{margin:12px 0}
+  .q p{margin:0 0 6px 0;font-weight:600;color:#0b3650}
+  .q label{display:block;margin:6px 0;color:#163444}
+  .btn{background:var(--accent-1);color:#fff;border:none;padding:10px 16px;border-radius:8px;cursor:pointer;font-weight:600}
+  .btn.ghost{background:transparent;color:var(--accent-1);border:1px solid rgba(2,136,209,0.15)}
+  .result{display:none;margin-top:12px;padding:12px;border-radius:8px}
+  .result.ok{background:#e8f5e9;border-left:4px solid var(--success);color:#1b5e20}
+  .result.warn{background:#fff3e0;border-left:4px solid #fb8c00;color:#714b00}
+
+  /* CTA */
+  .cta{display:inline-flex;gap:10px;align-items:center;padding:12px 18px;border-radius:10px;text-decoration:none;background:var(--accent-1);color:#fff;font-weight:700;box-shadow:0 6px 18px rgba(2,24,48,0.08)}
+  .cta:hover{transform:translateY(-3px);transition:.18s}
+
+  footer{padding:18px;text-align:center;color:#fff;background:linear-gradient(90deg,var(--accent-2),var(--accent-1));margin-top:22px;border-radius:0 0 8px 8px}
+
+  /* responsive */
+  @media (max-width:980px){
+    .row{flex-direction:column}
+    .aside{width:100%}
+    .video{max-width:100%}
+    <h3 style="color:var(--accent-2);margin-top:18px">Course Content</h3>
+  }
+  
+</style>
+</head>
+<body>
+
+<header>
+  <h1><i class="fa-solid fa-chalkboard-user"></i> Files & Folders Management — ICT Tutorial</h1>
+  <p>AVEE M/A JHS • Prepared by Mr. Bright Nyagbe Ganyo</p>
+</header>
+
+<div class="container">
+
+  <!-- Top cards -->
+  <div class="card">
+    <div class="row">
+      <div class="col">
+        <h2>Overview</h2>
+        <p>This tutorial explains files, folders, file types, and why folders are important. It includes practical video demonstrations and a short 15-question practice quiz with instant feedback. Use it in class or share it with students on laptops or phones.</p>
+        <div class="highlight">
+          <strong>Learning goals:</strong> By the end of this tutorial learners will be able to create, rename, and delete folders; identify common file types and file extensions; and organize files using folders.
+        </div>
+      </div>
+
+      <aside class="aside">
+        <div style="display:flex;gap:12px;align-items:center;justify-content:space-between">
+          <div style="display:flex;gap:10px;align-items:center">
+            <div class="small-ico"><i class="fa-solid fa-file"></i></div>
+            <div>
+              <div style="font-weight:700">Files</div>
+              <div style="color:var(--muted);font-size:13px">Store information</div>
+            </div>
+          </div>
+          <div style="display:flex;gap:10px;align-items:center">
+            <div class="small-ico"><i class="fa-solid fa-folder"></i></div>
+            <div>
+              <div style="font-weight:700">Folders</div>
+              <div style="color:var(--muted);font-size:13px">Organize files</div>
+            </div>
+          </div>
+        </div>
+        <hr style="border:none;border-top:1px solid #f0f8ff;margin:12px 0">
+        <div style="display:flex;flex-direction:column;gap:8px">
+          
+          <a class="cta" href="#quizLocal" style="background:#43a047"><i class="fa-solid fa-pencil"></i> Take Practice Quiz</a>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <!--  FILES AND FOLDERS -->
+  <div class="card">
+    <h2><i class="fa-solid fa-scale-balanced"></i>  LESSON 1:    <br> File and Folder - Detailed Comparison</h2>
+
+    <div class="row" style="align-items:flex-start">
+      <div class="col">
+        <h3>What is a File?</h3>
+        <p>A <strong>file</strong> is a named collection of data stored together. Files contain content such as text documents, images, videos or music. Files have names and usually have a file extension (for example <code>report.docx</code>) that tells the computer what kind of file it is and which program opens it.</p>
+
+        <h3>What is a Folder?</h3>
+        <p>A <strong>folder</strong> (also called a directory) is a container used to store and organize files and other folders (subfolders). Folders do not have file extensions — they are simply used to group related files together.</p>
+
+        <div class="example">
+          <strong>Analogy:</strong> Your computer is a school bag. Files are books and papers; folders are the pouches or subject dividers that keep each subject's books together.
+        </div>
+
+        <h3>Key Differences (Quick)</h3>
+        <table aria-label="File vs Folder comparison">
+          <tr><th>Feature</th><th>File</th><th>Folder</th></tr>
+          <tr><td>Definition</td><td>Stores data such as text, pictures or sound</td><td>Container used to organize files & folders</td></tr>
+          <tr><td>Extension</td><td>Has an extension (e.g. .docx)</td><td>No extension</td></tr>
+          <tr><td>Purpose</td><td>To hold information</td><td>To group related files</td></tr>
+          <tr><td>Example</td><td>homework.docx, song.mp3</td><td>SchoolWork, Photos</td></tr>
+        </table>
+      </div>
+
+      <div class="aside" aria-hidden="true">
+        <img class="diagram" src="https://cdn-icons-png.flaticon.com/512/716/716784.png" alt="Folder icon">
+        <img class="diagram" src="https://cdn-icons-png.flaticon.com/512/2721/2721200.png" alt="File types icon">
+      </div>
+    </div>
+  </div>
+
+  <!-- Why create folders -->
+  <div class="card">
+    <h2><i class="fa-solid fa-lightbulb"></i> Why Create Folders?</h2>
+    <div class="row">
+      <div class="col">
+        <p>Creating folders is a simple habit that saves time and prevents mistakes. Below are clear reasons and classroom-level examples.</p>
+
+        <h3>1. Organization</h3>
+        <p>Folders keep related files together. Example: Put all your ICT assignments in <code>ICT_Assignments</code> so you don't mix them with other subjects.</p>
+
+        <h3>2. Faster Searching</h3>
+        <p>When files are grouped, you look in the right place instead of searching across the whole computer.</p>
+
+        <h3>3. Avoid Accidental Loss</h3>
+        <p>Well-organized folders reduce accidental deletion and duplication because you know where important files are stored.</p>
+
+        <h3>4. Easy Backups & Sharing</h3>
+        <p>You can copy or share a single folder that contains everything needed for a project — easier than selecting many files.</p>
+
+        <h3>5. Professional Habits</h3>
+        <p>Organized folders help when working in teams: each project can have its own folder, with subfolders for documents, images, and reports.</p>
+      </div>
+
+      <div class="aside" aria-hidden="true">
+        <img class="diagram" src="https://cdn-icons-png.flaticon.com/512/3845/3845738.png" alt="Organized folders">
+      </div>
+    </div>
+  </div>
+
+  <!-- Common file types -->
+  <div class="card">
+    <h2><i class="fa-solid fa-file-lines"></i> Common File Types & How They Are Used</h2>
+    <div class="row">
+      <div class="col">
+        <p>Each file type stores different kinds of data. The extension (the letters after the dot) helps the computer decide how to open the file.</p>
+
+        <div class="highlight">
+          <strong>Document</strong> — <code>.docx, .pdf, .txt</code> — essays, reports, notes.<br>
+          <strong>Spreadsheet</strong> — <code>.xlsx, .csv</code> — marks, tables, calculations.<br>
+          <strong>Presentation</strong> — <code>.pptx, .odp</code> — slides for lessons.<br>
+          <strong>Image</strong> — <code>.jpg, .png, .gif</code> — photos, diagrams.<br>
+          <strong>Audio</strong> — <code>.mp3, .wav</code> — songs, recorded lessons.<br>
+          <strong>Video</strong> — <code>.mp4, .avi</code> — lesson recordings, demonstrations.<br>
+          <strong>System</strong> — <code>.sys, .dll</code> — used by the operating system.<br>
+          <strong>Archive</strong> — <code>.zip, .rar</code> — compressed folders for transfer/backup.
+        </div>
+
+        <div class="example">
+          <strong>Note:</strong> If you receive a file that you cannot open, check the extension and use the correct program (e.g., Word for .docx, VLC for .mp4).
+        </div>
+
+      </div>
+
+      <div class="aside" aria-hidden="true">
+        <img class="diagram" src="https://cdn-icons-png.flaticon.com/512/744/744922.png" alt="File extensions">
+      </div>
+    </div>
+  </div>
+
+  <!-- Videos: YouTube embeds (replace links with your own if needed) -->
+  <div class="card">
+    <h2><i class="fa-solid fa-video"></i> Step-by-step Video Demonstrations</h2>
+    <p>Below are embedded tutorial videos showing how to create, rename and delete folders. Replace the YouTube links with your own recordings or local files if desired.</p>
+<div class="video-wrap">
+
+  <!-- CREATE FOLDER -->
+  <div class="lesson-step">
+    <h3><i class="fa-solid fa-folder-plus"></i> Creating a Folder</h3>
+    <div class="step-content" style="display:flex;gap:18px;align-items:center;flex-wrap:wrap">
+      <img src="images/create-folder.png" alt="Create Folder Example" style="width:200px;border-radius:10px;box-shadow:0 3px 8px rgba(0,0,0,0.15)">
+      <div style="flex:1;min-width:250px">
+        <p><strong>To create a new folder:</strong></p>
+        <ol style="margin-left:18px; color:var(--muted); line-height:1.8;">
+          <li>Go to the location where you want to create the folder (e.g., Desktop or Documents).</li>
+          <li>Right-click on an empty space.</li>
+          <li>From the menu, select <strong>New → Folder</strong>.</li>
+          <li>Type a suitable name, for example <code>ICT_Assignments</code>.</li>
+          <li>Press <strong>Enter</strong> to save the folder name.</li>
+        </ol>
+        <p>This helps you organize your files neatly into subject or topic folders.</p>
+      </div>
+    </div>
+
+    <div class="video" style="margin-top:10px">
+      <iframe width="100%" height="315" src="videos/create-folder.mp4"  frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+  </div>
+  
+  <!-- RENAME FOLDER -->
+  <div class="lesson-step">
+    <h3><i class="fa-solid fa-i-cursor"></i> Renaming a Folder</h3>
+    <div class="step-content" style="display:flex;gap:18px;align-items:center;flex-wrap:wrap">
+      <img src="images/rename-folder.png" alt="Rename Folder Example" style="width:200px;border-radius:10px;box-shadow:0 3px 8px rgba(0,0,0,0.15)">
+      <div style="flex:1;min-width:250px">
+        <p><strong>To rename a folder:</strong></p>
+        <ol style="margin-left:18px; color:var(--muted); line-height:1.8;">
+          <li>Locate the folder you want to rename.</li>
+          <li>Right-click on the folder name.</li>
+          <li>Select <strong>Rename</strong> from the context menu.</li>
+          <li>Type the new name (e.g., change <code>New Folder</code> to <code>Class6_ICT</code>).</li>
+          <li>Press <strong>Enter</strong> to confirm.</li>
+        </ol>
+        <p>Renaming keeps folders meaningful and easier to find.</p>
+      </div>
+    </div>
+    <div class="video" style="margin-top:10px">
+      <iframe width="100%" height="315" src="videos/rename-folder.mp4"  frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+  </div>
+
+  <!-- DELETE FOLDER -->
+  <div class="lesson-step">
+    <h3><i class="fa-solid fa-trash"></i> Deleting a Folder</h3>
+    <div class="step-content" style="display:flex;gap:18px;align-items:center;flex-wrap:wrap">
+      <img src="images/delete-folder.png" alt="Delete Folder Example" style="width:200px;border-radius:10px;box-shadow:0 3px 8px rgba(0,0,0,0.15)">
+      <div style="flex:1;min-width:250px">
+        <p><strong>To delete a folder:</strong></p>
+        <ol style="margin-left:18px; color:var(--muted); line-height:1.8;">
+          <li>Locate the folder you no longer need.</li>
+          <li>Right-click on it and choose <strong>Delete</strong>.</li>
+          <li>The folder will move to the <strong>Recycle Bin</strong>.</li>
+          <li>If deleted by mistake, open the Recycle Bin and click <strong>Restore</strong>.</li>
+          <li>To permanently remove it, right-click the Recycle Bin and select <strong>Empty Recycle Bin</strong>.</li>
+        </ol>
+        <p>This keeps your computer organized and free of unnecessary folders.</p>
+      </div>
+    </div>
+    <div class="video" style="margin-top:10px">
+      <iframe width="100%" height="315" src="videos/delete-folder.mp4"  frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+  </div>
+
+  <p style="text-align:center;color:var(--muted);font-size:13px;margin-top:20px">
+    Tip: Save your own screenshots (create-folder.png, rename-folder.png, delete-folder.png) inside an <code>/images</code> folder for better engagement.
+  </p>
+</div>
+    
+  </div>
+
+  <!-- Practice Quiz (15 auto-marked) -->
+  <div class="card" id="quizLocal">
+    <h2><i class="fa-solid fa-question-circle"></i> Practice Quiz — Files & Folders (15 Questions)</h2>
+    <p>Choose the best answer for each question and click <strong>Check Answers</strong>. You will get instant feedback and a score.</p>
+
+    <div class="quiz">
+      <form id="quizForm">
+        <!-- Q1 -->
+        <div class="q">
+          <p>1. A folder is used to:</p>
+          <label><input type="radio" name="q1" value="a"> a) Type text</label>
+          <label><input type="radio" name="q1" value="b"> b) Store and organize files</label>
+          <label><input type="radio" name="q1" value="c"> c) Play music</label>
+          <label><input type="radio" name="q1" value="d"> d) Edit images</label>
+        </div>
+
+        <!-- Q2 -->
+        <div class="q">
+          <p>2. Which one is an example of a file?</p>
+          <label><input type="radio" name="q2" value="a"> a) Documents</label>
+          <label><input type="radio" name="q2" value="b"> b) Music</label>
+          <label><input type="radio" name="q2" value="c"> c) Song.mp3</label>
+          <label><input type="radio" name="q2" value="d"> d) Pictures</label>
+        </div>
+
+        <!-- Q3 -->
+        <div class="q">
+          <p>3. A file extension helps to:</p>
+          <label><input type="radio" name="q3" value="a"> a) Make the file beautiful</label>
+          <label><input type="radio" name="q3" value="b"> b) Identify the type of file</label>
+          <label><input type="radio" name="q3" value="c"> c) Change the folder color</label>
+          <label><input type="radio" name="q3" value="d"> d) Rename the file</label>
+        </div>
+
+        <!-- Q4 -->
+        <div class="q">
+          <p>4. Which of the following is a folder name?</p>
+          <label><input type="radio" name="q4" value="a"> a) ICT.docx</label>
+          <label><input type="radio" name="q4" value="b"> b) MyPictures</label>
+          <label><input type="radio" name="q4" value="c"> c) Music.mp3</label>
+          <label><input type="radio" name="q4" value="d"> d) Story.txt</label>
+        </div>
+
+        <!-- Q5 -->
+        <div class="q">
+          <p>5. A file can be compared to:</p>
+          <label><input type="radio" name="q5" value="a"> a) A classroom</label>
+          <label><input type="radio" name="q5" value="b"> b) A sheet of paper</label>
+          <label><input type="radio" name="q5" value="c"> c) A school</label>
+          <label><input type="radio" name="q5" value="d"> d) A bag</label>
+        </div>
+
+        <!-- Q6 -->
+        <div class="q">
+          <p>6. Folders can contain:</p>
+          <label><input type="radio" name="q6" value="a"> a) Only one file</label>
+          <label><input type="radio" name="q6" value="b"> b) Files and other folders</label>
+          <label><input type="radio" name="q6" value="c"> c) Music only</label>
+          <label><input type="radio" name="q6" value="d"> d) Documents only</label>
+        </div>
+
+        <!-- Q7 -->
+        <div class="q">
+          <p>7. The purpose of file extensions is to:</p>
+          <label><input type="radio" name="q7" value="a"> a) Decorate the filename</label>
+          <label><input type="radio" name="q7" value="b"> b) Show which program can open it</label>
+          <label><input type="radio" name="q7" value="c"> c) Shorten the filename</label>
+          <label><input type="radio" name="q7" value="d"> d) Protect it from viruses</label>
+        </div>
+
+        <!-- Q8 -->
+        <div class="q">
+          <p>8. The extension <code>.pptx</code> belongs to:</p>
+          <label><input type="radio" name="q8" value="a"> a) Music file</label>
+          <label><input type="radio" name="q8" value="b"> b) Video file</label>
+          <label><input type="radio" name="q8" value="c"> c) Presentation file</label>
+          <label><input type="radio" name="q8" value="d"> d) Image file</label>
+        </div>
+
+        <!-- Q9 -->
+        <div class="q">
+          <p>9. Which of these is a video file?</p>
+          <label><input type="radio" name="q9" value="a"> a) Lesson.mp4</label>
+          <label><input type="radio" name="q9" value="b"> b) Poem.docx</label>
+          <label><input type="radio" name="q9" value="c"> c) Song.wav</label>
+          <label><input type="radio" name="q9" value="d"> d) Picture.png</label>
+        </div>
+
+        <!-- Q10 -->
+        <div class="q">
+          <p>10. To keep your computer neat, you should:</p>
+          <label><input type="radio" name="q10" value="a"> a) Store all files on the desktop</label>
+          <label><input type="radio" name="q10" value="b"> b) Create folders for each subject</label>
+          <label><input type="radio" name="q10" value="c"> c) Delete all folders</label>
+          <label><input type="radio" name="q10" value="d"> d) Use only one folder</label>
+        </div>
+
+        <!-- Q11 -->
+        <div class="q">
+          <p>11. Which file stores data in rows and columns?</p>
+          <label><input type="radio" name="q11" value="a"> a) .txt</label>
+          <label><input type="radio" name="q11" value="b"> b) .xlsx</label>
+          <label><input type="radio" name="q11" value="c"> c) .mp3</label>
+          <label><input type="radio" name="q11" value="d"> d) .jpg</label>
+        </div>
+
+        <!-- Q12 -->
+        <div class="q">
+          <p>12. When you right-click a folder and select <strong>Rename</strong>, you:</p>
+          <label><input type="radio" name="q12" value="a"> a) Copy it</label>
+          <label><input type="radio" name="q12" value="b"> b) Move it</label>
+          <label><input type="radio" name="q12" value="c"> c) Change its name</label>
+          <label><input type="radio" name="q12" value="d"> d) Delete it</label>
+        </div>
+
+        <!-- Q13 -->
+        <div class="q">
+          <p>13. Which statement is true?</p>
+          <label><input type="radio" name="q13" value="a"> a) Files can contain other folders</label>
+          <label><input type="radio" name="q13" value="b"> b) Folders can contain files</label>
+          <label><input type="radio" name="q13" value="c"> c) Both are the same</label>
+          <label><input type="radio" name="q13" value="d"> d) Files have no names</label>
+        </div>
+
+        <!-- Q14 -->
+        <div class="q">
+          <p>14. A system file is used:</p>
+          <label><input type="radio" name="q14" value="a"> a) By users to play games</label>
+          <label><input type="radio" name="q14" value="b"> b) By the computer to operate programs</label>
+          <label><input type="radio" name="q14" value="c"> c) For music</label>
+          <label><input type="radio" name="q14" value="d"> d) For pictures</label>
+        </div>
+
+        <!-- Q15 -->
+        <div class="q">
+          <p>15. Which of these is the correct order?</p>
+          <label><input type="radio" name="q15" value="a"> a) File → Folder</label>
+          <label><input type="radio" name="q15" value="b"> b) Folder → File</label>
+          <label><input type="radio" name="q15" value="c"> c) File → File</label>
+          <label><input type="radio" name="q15" value="d"> d) Folder → Folder</label>
+        </div>
+
+        <div style="text-align:center;margin-top:12px">
+          <button type="button" class="btn" onclick="gradeQuiz()">Check Answers</button>
+          <button type="button" class="btn ghost" onclick="resetQuiz()" style="margin-left:8px">Reset</button>
+        </div>
+      </form>
+
+      <div id="quizResult" class="result"></div>
+    </div>
+  </div>
+
+  
+
+
+
+<footer>
+  Prepared by <strong>Mr. Bright Nyagbe Ganyo</strong> — AVEE M/A JHS • © 2025 ICT Tutorial Notes
+</footer>
+
+<script>
+/* ========== quiz logic ========== */
+const answers = {
+  q1: 'b',
+  q2: 'c',
+  q3: 'b',
+  q4: 'b',
+  q5: 'b',
+  q6: 'b',
+  q7: 'b',
+  q8: 'c',
+  q9: 'a',
+  q10: 'b',
+  q11: 'b',
+  q12: 'c',
+  q13: 'b',
+  q14: 'b',
+  q15: 'b'
+};
+
+function gradeQuiz(){
+  let score = 0;
+  let total = Object.keys(answers).length;
+  for (let i=1;i<=total;i++){
+    const name = 'q'+i;
+    const selected = document.querySelector('input[name="'+name+'"]:checked');
+    if (selected && selected.value === answers[name]) {
+      score++;
+      // visually mark correct (optional)
+      selected.parentElement.style.fontWeight = '700';
+      selected.parentElement.style.color = '#0b5d22';
+    }
+  }
+  const resultDiv = document.getElementById('quizResult');
+  resultDiv.style.display = 'block';
+  const percent = Math.round((score/total)*100);
+  if(percent >= 80){
+    resultDiv.className = 'result ok';
+    resultDiv.innerHTML = `<strong>Great work!</strong> You scored ${score}/${total} (${percent}%). Keep it up!`;
+  } else if (percent >= 50){
+    resultDiv.className = 'result warn';
+    resultDiv.innerHTML = `<strong>Good job.</strong> You scored ${score}/${total} (${percent}%). Review the lesson and try again.`;
+  } else {
+    resultDiv.className = 'result warn';
+    resultDiv.innerHTML = `<strong>Keep practicing.</strong> You scored ${score}/${total} (${percent}%). Read the tutorial again and retake the quiz.`;
+  }
+  // scroll to result for clarity
+  resultDiv.scrollIntoView({behavior:'smooth', block:'center'});
+}
+
+function resetQuiz(){
+  document.getElementById('quizForm').reset();
+  const resultDiv = document.getElementById('quizResult');
+  resultDiv.style.display = 'none';
+  // reset styling
+  document.querySelectorAll('.quiz label').forEach(l => { l.style.fontWeight=''; l.style.color=''; });
+}
+</script>
+
+</body>
+</html>  
